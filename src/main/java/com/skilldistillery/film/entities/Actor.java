@@ -1,14 +1,77 @@
 package com.skilldistillery.film.entities;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 public class Actor {
+	
 	private int id;
 	private String firstName;
 	private String lastName;
+	private List<Film> films;
 	
+	public Actor(){}
+	
+	public Actor(String firstName, String lastName) {
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Actor(String firstName, String lastName, List<Film> films) {
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.films = films;
+	}
+
 	public Actor(int id, String firstName, String lastName) {
+
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Actor [actors=");
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Actor other = (Actor) obj;
+		return id == other.id;
+	}
+	
+	
+
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
 	}
 
 	public int getId() {
@@ -35,8 +98,4 @@ public class Actor {
 		this.lastName = lastName;
 	}
 	
-	@Override
-	public String toString() {
-		return this.firstName + " " + this.lastName;
-	}
 }

@@ -1,26 +1,39 @@
 package com.skilldistillery.film.entities;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Film {
+
 	private int id;
 	private String title;
 	private String description;
-	private int releaseYear;
+	private Integer releaseYear;
 	private int languageId;
 	private int rentalDuration;
 	private double rentalRate;
-	private int length;
+	private Integer length;
 	private double replacementCost;
-	private String rating;
+	private Enum<Rating> rating;
 	private String specialFeatures;
-	private List<Actor> actors;
-	private String filmLanguage;
+	private String language;
+	private List<String> category;
 
-	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			String filmLanguage, List<Actor> actors) {
+
+	private List<Actor> cast;
+	
+	public Film() {}
+	
+	public Film(String title) {
+		super();
+		this.title = title;
+	}
+
+
+	public Film(int id, String title, String description, Integer releaseYear, int languageId, int rentalDuration,
+			double rentalRate, Integer length, double replacementCost, String rating, String specialFeatures, List<Actor> cast, String language, List<String> category) {
+
+		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -30,10 +43,66 @@ public class Film {
 		this.rentalRate = rentalRate;
 		this.length = length;
 		this.replacementCost = replacementCost;
-		this.rating = rating;
+		setRating(rating);
 		this.specialFeatures = specialFeatures;
-		this.actors = actors;
-		this.filmLanguage = filmLanguage;
+		this.cast = cast;
+		this.language = language;
+		this.category = category;
+
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Film [id=");
+		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", releaseYear=");
+		builder.append(releaseYear);
+		builder.append(", languageId=");
+		builder.append(languageId);
+		builder.append(", rentalDuration=");
+		builder.append(rentalDuration);
+		builder.append(", rentalRate=");
+		builder.append(rentalRate);
+		builder.append(", length=");
+		builder.append(length);
+		builder.append(", replacementCost=");
+		builder.append(replacementCost);
+		builder.append(", rating=");
+		builder.append(rating);
+		builder.append(", specialFeatures=");
+		builder.append(specialFeatures);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Film other = (Film) obj;
+		return id == other.id;
 	}
 
 	public int getId() {
@@ -60,11 +129,11 @@ public class Film {
 		this.description = description;
 	}
 
-	public int getReleaseYear() {
+	public Integer getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(int releaseYear) {
+	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
@@ -92,11 +161,11 @@ public class Film {
 		this.rentalRate = rentalRate;
 	}
 
-	public int getLength() {
+	public Integer getLength() {
 		return length;
 	}
 
-	public void setLength(int length) {
+	public void setLength(Integer length) {
 		this.length = length;
 	}
 
@@ -109,11 +178,36 @@ public class Film {
 	}
 
 	public String getRating() {
-		return rating;
+		return "" + rating;
 	}
 
 	public void setRating(String rating) {
-		this.rating = rating;
+
+		rating.toUpperCase();
+
+		switch (rating) {
+		case "G":
+			this.rating = Rating.G;
+			break;
+		case "PG":
+			this.rating = Rating.PG;
+			break;
+		case "PG13":
+		case "PG-13":
+		case "PG 13":
+			this.rating = Rating.PG13;
+			break;
+		case "R":
+			this.rating = Rating.R;
+			break;
+		case "NC17":
+		case "NC-17":
+		case "NC 17":
+			this.rating = Rating.NC17;
+			break;
+		default:
+			this.rating = Rating.R;
+		}
 	}
 
 	public String getSpecialFeatures() {
@@ -124,26 +218,20 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public String getFilmLanguage() {
-		return filmLanguage;
+	public List<Actor> getCast() {
+		return cast;
 	}
 
-	public void setFilmLanguage(String filmLanguage) {
-		this.filmLanguage = filmLanguage;
+	public void setCast(List<Actor> cast) {
+		this.cast = cast;
+	}
+	
+
+	public List<String> getCategory() {
+		return category;
 	}
 
-	public List<Actor> getActors() {
-		return new ArrayList<Actor>(this.actors);
+	public void setCategory(List<String> category) {
+		this.category = category;
 	}
-
-	public void setActors(List<Actor> actors) {
-		List<Actor> updatedActors = new ArrayList<Actor>(actors);
-		this.actors = updatedActors;
-	}
-
-	@Override
-	public String toString() {
-		return this.title;
-	}
-
 }
