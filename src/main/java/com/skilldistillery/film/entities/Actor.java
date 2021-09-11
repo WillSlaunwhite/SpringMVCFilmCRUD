@@ -1,8 +1,10 @@
 package com.skilldistillery.film.entities;
+
 public class Actor {
 	private int id;
 	private String firstName;
 	private String lastName;
+	
 	public Actor(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
@@ -32,6 +34,7 @@ public class Actor {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 	@Override
 	public String toString() {
 		return this.firstName + " " + this.lastName;
