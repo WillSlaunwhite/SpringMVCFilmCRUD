@@ -17,5 +17,11 @@ public class FilmControllers {
 		return "WEB-INF/home.jsp";
 	}
 	
+	@RequestMapping(path = {"/", "FindFilmByIDPage.do"})
+	public String findFilmByID() {
+		return "WEB-INF/FindFilmByID.jsp";
+	}
+	
+	
 	
 }
