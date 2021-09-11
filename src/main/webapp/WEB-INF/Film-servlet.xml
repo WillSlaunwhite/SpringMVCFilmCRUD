@@ -11,7 +11,7 @@
 
 <mvc:annotation-driven/>
 
-<bean id="dao" class="com.skilldistillery.film.dao.FilmDaoJdbcImpl"/>
+<bean id="dao" class="com.skilldistillery.film.dao.FilmDAOJdbcImpl"/>
 	
 
 </beans>
