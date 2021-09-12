@@ -245,9 +245,18 @@ public class FilmDAOJdbcImpl implements FilmDAO {
 
 			conn.setAutoCommit(false); // START TRANSACTION
 			
-			String sql = "insert into film(title, language_id) values (?, 1)";
+			String sql = "insert into film(title, language_id, description, release_year, rental_duration, rental_rate, length, replacement_cost, rating, special_features) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, film.getTitle());
+			ps.setInt(2, film.getLanguageId());
+			ps.setString(3, film.getDescription());
+			ps.setInt(4, film.getReleaseYear());
+			ps.setInt(5, film.getRentalDuration());
+			ps.setDouble(6, film.getRentalRate());
+			ps.setInt(7,film.getLength());
+			ps.setDouble(8, film.getReplacementCost());
+			ps.setString(9, film.getRating());
+			ps.setString(10, film.getSpecialFeatures());
 			
 			int updateCount = ps.executeUpdate();
 			if (updateCount == 1) {
@@ -364,7 +373,7 @@ public class FilmDAOJdbcImpl implements FilmDAO {
 	
 	private List<String> getCategory(int filmId) {
 		
-		try (Connection conn = DriverManager.getConnection(url)) {
+		try (Connection conn = DriverManager.getConnection(url, user, pass)) {
 			
 			conn.setAutoCommit(false); // START TRANSACTION
 			
