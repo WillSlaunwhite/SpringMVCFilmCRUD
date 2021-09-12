@@ -23,7 +23,7 @@ public class FilmControllers {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
-		return "WEB-INF/home.jsp";
+		return "WEB-INF/index.html";
 	}
 
 	@RequestMapping(path = { "findFilmById.do" }, method = RequestMethod.GET)
