@@ -9,11 +9,11 @@ public class Film {
 	private String title;
 	private String description;
 	private Integer releaseYear;
-	private int languageId;
-	private int rentalDuration;
-	private double rentalRate;
+	private Integer languageId;
+	private Integer rentalDuration;
+	private Double rentalRate;
 	private Integer length;
-	private double replacementCost;
+	private Double replacementCost;
 	private Enum<Rating> rating;
 	private String specialFeatures;
 	private String language;
@@ -30,8 +30,8 @@ public class Film {
 	}
 
 
-	public Film(int id, String title, String description, Integer releaseYear, int languageId, int rentalDuration,
-			double rentalRate, Integer length, double replacementCost, String rating, String specialFeatures, List<Actor> cast, String language, List<String> category) {
+	public Film(int id, String title, String description, Integer releaseYear, Integer languageId, Integer rentalDuration,
+			Double rentalRate, Integer length, Double replacementCost, String rating, String specialFeatures, List<Actor> cast, String language, List<String> category) {
 
 		super();
 		this.id = id;
@@ -137,27 +137,27 @@ public class Film {
 		this.releaseYear = releaseYear;
 	}
 
-	public int getLanguageId() {
+	public Integer getLanguageId() {
 		return languageId;
 	}
 
-	public void setLanguageId(int languageId) {
+	public void setLanguageId(Integer languageId) {
 		this.languageId = languageId;
 	}
 
-	public int getRentalDuration() {
+	public Integer getRentalDuration() {
 		return rentalDuration;
 	}
 
-	public void setRentalDuration(int rentalDuration) {
+	public void setRentalDuration(Integer rentalDuration) {
 		this.rentalDuration = rentalDuration;
 	}
 
-	public double getRentalRate() {
+	public Double getRentalRate() {
 		return rentalRate;
 	}
 
-	public void setRentalRate(double rentalRate) {
+	public void setRentalRate(Double rentalRate) {
 		this.rentalRate = rentalRate;
 	}
 
@@ -169,11 +169,11 @@ public class Film {
 		this.length = length;
 	}
 
-	public double getReplacementCost() {
+	public Double getReplacementCost() {
 		return replacementCost;
 	}
 
-	public void setReplacementCost(double replacementCost) {
+	public void setReplacementCost(Double replacementCost) {
 		this.replacementCost = replacementCost;
 	}
 

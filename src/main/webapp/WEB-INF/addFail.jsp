@@ -8,7 +8,7 @@
 <title>Error</title>
 </head>
 <body>
-<h3>No Result Found</h3>
+<h3>Unable to Add Film</h3>
 
 </body>
 </html>
