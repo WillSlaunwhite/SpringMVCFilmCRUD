@@ -33,12 +33,12 @@ public class FilmControllers {
 		Film film = filmdao.findFilmById(integerId);
 	
 		if (film == null) {
-			mv.setViewName("WEB-INF/views/NoResults.jsp");
+			mv.setViewName("WEB-INF/NoResults.jsp");
 			return mv;
 		}
 		
 		mv.addObject("film", film);
-		mv.setViewName("WEB-INF/views/result.jsp");
+		mv.setViewName("WEB-INF/result.jsp");
 
 		return mv;
 	}
@@ -52,12 +52,12 @@ public class FilmControllers {
 
 			mv.addObject("message",
 					"We weren't able to find any movies matching your request.  Maybe try fewer words or different phrases.");
-			mv.setViewName("WEB-INF/views/NoResults.jsp");
+			mv.setViewName("WEB-INF/NoResults.jsp");
 			return mv;
 		}
 		mv.addObject("films", films);
 
-		mv.setViewName("WEB-INF/views/results.jsp");
+		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
 
@@ -70,12 +70,12 @@ public class FilmControllers {
 
 		if (f == null) {
 			mv.addObject("message", "Error: We weren't able to add your movie.  Popcorn on us?");
-			mv.setViewName("WEB-INF/views/NoResults.jsp");
+			mv.setViewName("WEB-INF/NoResults.jsp");
 			return mv;
 		}
 
 		mv.addObject("film", film);
-		mv.setViewName("WEB-INF/views/result.jsp");
+		mv.setViewName("WEB-INF/result.jsp");
 		return mv;
 	}
 
@@ -91,16 +91,16 @@ public class FilmControllers {
 
 			if (success) {
 				mv.addObject("message", "Your film has been sucessfully deleted.");
-				mv.setViewName("WEB-INF/views/message.jsp");
+				mv.setViewName("WEB-INF/message.jsp");
 				return mv;
 			} else {
 				mv.addObject("message", "Error: We weren't able to remove the movie.  Popcorn on us?");
-				mv.setViewName("WEB-INF/views/NoResults.jsp");
+				mv.setViewName("WEB-INF/NoResults.jsp");
 				return mv;
 			}
 		} else {
 
-			mv.setViewName("WEB-INF/views/index.jsp");
+			mv.setViewName("WEB-INF/index.jsp");
 			return mv;
 		}
 
@@ -117,16 +117,16 @@ public class FilmControllers {
 
 			if (toEdit != null) {
 				mv.addObject("film", toEdit);
-				mv.setViewName("WEB-INF/views/editMovie.jsp");
+				mv.setViewName("WEB-INF/editMovie.jsp");
 				return mv;
 			} else {
 				mv.addObject("message", "Error: We had an issue trying to edit that movie.  It's possible that it's been deleted.");
-				mv.setViewName("WEB-INF/views/NoResults.jsp");
+				mv.setViewName("WEB-INF/NoResults.jsp");
 				return mv;
 			}
 		} else {
 
-			mv.setViewName("WEB-INF/views/index.jsp");
+			mv.setViewName("WEB-INF/index.jsp");
 			return mv;
 		}
 
@@ -143,12 +143,12 @@ public class FilmControllers {
 			
 			mv.addObject("message", "Your film has been updated.");
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/views/result.jsp");
+			mv.setViewName("WEB-INF/result.jsp");
 			return mv;
 		}
 		else {
 			mv.addObject("message", "Error: there was an issue updating the film.");
-			mv.setViewName("WEB-INF/views/NoResults.jsp");
+			mv.setViewName("WEB-INF/NoResults.jsp");
 			return mv;
 		}
 
